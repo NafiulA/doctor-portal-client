@@ -6,6 +6,7 @@ import Contact from './Pages/Contact/Contact';
 import Home from './Pages/Home/Home/Home';
 import Login from './Pages/Login/Login';
 import Reviews from './Pages/Reviews/Reviews';
+import Footer from './Pages/Shared/Footer/Footer';
 import Header from './Pages/Shared/Header/Header';
 import Signup from './Pages/Signup/Signup';
 
@@ -22,6 +23,7 @@ function App() {
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<Signup></Signup>}></Route>
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }
