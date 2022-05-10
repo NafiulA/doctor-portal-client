@@ -5,7 +5,7 @@ const Hero = () => {
     return (
         <div>
             <div className='bg-cover bg-no-repeat bg-left' style={{ backgroundImage: `url(${chair})` }} >
-                <div className="hero min-h-screen bg-gradient-to-t md:bg-gradient-to-l from-white to-[#ffffffa9]">
+                <div className="hero min-h-screen bg-gradient-to-t md:bg-gradient-to-l from-white to-[#ffffffdc]">
                     <div className="hero-content flex-col lg:flex-row-reverse">
                         <img src={chair} className="w-full max-w-md rounded-lg shadow-2xl lg:ml-5" alt='' />
                         <div>
