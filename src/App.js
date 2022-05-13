@@ -1,3 +1,4 @@
+import { Toaster } from 'react-hot-toast';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import About from './Pages/About/About';
@@ -24,6 +25,10 @@ function App() {
         <Route path='/signup' element={<Signup></Signup>}></Route>
       </Routes>
       <Footer></Footer>
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+      />
     </div>
   );
 }
