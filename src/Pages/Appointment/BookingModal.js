@@ -1,10 +1,25 @@
 import React from 'react';
 import { format } from 'date-fns';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const BookingModal = ({ treatment, date, setTreatment }) => {
+    const [user] = useAuthState(auth);
+
     const handleBooking = (event) => {
         event.preventDefault();
         const slot = event.target.slot.value;
+        const phone = event.target.phone.value;
+        const body = {
+            date: date.toDateString(),
+            slot: slot,
+            treatment: name,
+            name: user.displayName,
+            email: user.email,
+            phone: phone
+        };
+        console.log(body);
+
         setTreatment(null);
     }
 
@@ -19,10 +34,10 @@ const BookingModal = ({ treatment, date, setTreatment }) => {
                     <form onSubmit={handleBooking} className='grid grid-cols-1 gap-3 justify-items-center'>
                         <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" disabled value={`${format(date, "PP")}`} />
                         <select name='slot' class="select select-bordered w-full max-w-xs">
-                            {slots.map(slot => <option value={slot}>{slot}</option>)}
+                            {slots.map((slot, index) => <option key={index} value={slot}>{slot}</option>)}
                         </select>
-                        <input type="text" name='name' placeholder="Your name" class="input input-bordered w-full max-w-xs" />
-                        <input type="text" name='email' placeholder="Email Address" class="input input-bordered w-full max-w-xs" />
+                        <input type="text" disabled name='name' defaultValue={user?.displayName} class="input input-bordered w-full max-w-xs" />
+                        <input type="text" disabled name='email' defaultValue={user?.email} class="input input-bordered w-full max-w-xs" />
                         <input type="text" name='phone' placeholder="Phone Number" class="input input-bordered w-full max-w-xs" />
                         <input type="submit" class="btn btn-secondary w-full max-w-xs" />
                     </form>

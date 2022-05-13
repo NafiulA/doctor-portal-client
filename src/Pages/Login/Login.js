@@ -48,7 +48,6 @@ const Login = () => {
 
     const email = watch("email", "");
     const handleResetPassword = async () => {
-        console.log(email);
         if (email) {
             await sendPasswordResetEmail(email);
             if (resetError) {
