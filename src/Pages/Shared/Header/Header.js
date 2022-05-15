@@ -9,9 +9,10 @@ const Header = () => {
     const menuItems = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/appointment">Appointment</NavLink></li>
-        <li><NavLink to="reviews">Reviews</NavLink></li>
+        <li><NavLink to="/reviews">Reviews</NavLink></li>
         <li><NavLink to="/contactus">Contact Us</NavLink></li>
         <li><NavLink to="/about">About</NavLink></li>
+        {user && <li><NavLink to="/dashboard">Dashboard</NavLink></li>}
         <li>{user ? <button onClick={() => signOut(auth)} className='btn btn-ghost'>Log Out</button> : <NavLink to="/login">Login</NavLink>}</li>
     </>
     return (
