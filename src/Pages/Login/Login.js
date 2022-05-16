@@ -6,6 +6,7 @@ import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-fireba
 import auth from "../../firebase.init";
 import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
 import Loading from '../Shared/Loading/Loading';
+import useToken from '../../Hooks/useToken';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -20,12 +21,13 @@ const Login = () => {
     ] = useSignInWithEmailAndPassword(auth);
     const [sendPasswordResetEmail, sending, resetError] = useSendPasswordResetEmail(auth);
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+    const [token] = useToken(user || googleUser);
     useEffect(() => {
-        if (user || googleUser) {
+        if (token) {
             toast.success("Login Successful", { id: "login" });
             navigate(from, { replace: true });
         }
-    }, [user, googleUser, from, navigate]);
+    }, [token, from, navigate]);
 
     if (errors.email || errors.password) {
         if (errors?.email) {

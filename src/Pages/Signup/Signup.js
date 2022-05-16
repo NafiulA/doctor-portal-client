@@ -6,6 +6,7 @@ import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfil
 import auth from "../../firebase.init";
 import Loading from '../Shared/Loading/Loading';
 import { sendEmailVerification } from 'firebase/auth';
+import useToken from '../../Hooks/useToken';
 
 
 const Signup = () => {
@@ -22,13 +23,13 @@ const Signup = () => {
 
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    const [token] = useToken(user || googleUser);
     useEffect(() => {
-        if (user || googleUser) {
+        if (token) {
             toast.success("Signup Successful!", { id: "signup" });
-            console.log(user);
             navigate(from, { replace: true });
         }
-    }, [user, googleUser, from, navigate]);
+    }, [token, from, navigate]);
 
     if (errors.email || errors.password) {
         if (errors?.email) {
