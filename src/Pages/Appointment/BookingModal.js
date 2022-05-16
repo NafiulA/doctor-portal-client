@@ -22,7 +22,7 @@ const BookingModal = ({ treatment, date, setTreatment, refetch }) => {
             patientEmail: user.email,
             patientPhone: phone
         };
-        fetch("http://localhost:5000/booking", {
+        fetch("https://dry-fjord-64205.herokuapp.com/booking", {
             method: "POST",
             headers: {
                 "Content-type": "application/json"
