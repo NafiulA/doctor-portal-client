@@ -14,6 +14,7 @@ import Login from './Pages/Login/Login';
 import Reviews from './Pages/Reviews/Reviews';
 import Footer from './Pages/Shared/Footer/Footer';
 import Header from './Pages/Shared/Header/Header';
+import RequireAdmin from './Pages/Shared/RequireAdmin/RequireAdmin';
 import RequireAuth from './Pages/Shared/RequireAuth/RequireAuth';
 import Signup from './Pages/Signup/Signup';
 
@@ -29,7 +30,7 @@ function App() {
           <Route index element={<MyAppointments></MyAppointments>}></Route>
           <Route path='myreviews' element={<MyReviews></MyReviews>}></Route>
           <Route path='myhistory' element={<MyHistory></MyHistory>}></Route>
-          <Route path='allusers' element={<AllUsers></AllUsers>}></Route>
+          <Route path='allusers' element={<RequireAdmin><AllUsers></AllUsers></RequireAdmin>}></Route>
         </Route>
         <Route path='/reviews' element={<Reviews></Reviews>}></Route>
         <Route path='/contactus' element={<Contact></Contact>}></Route>
