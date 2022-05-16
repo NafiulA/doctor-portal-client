@@ -4,6 +4,7 @@ import './App.css';
 import About from './Pages/About/About';
 import Appointment from './Pages/Appointment/Appointment';
 import Contact from './Pages/Contact/Contact';
+import AllUsers from './Pages/Dashboard/AllUsers';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import MyAppointments from './Pages/Dashboard/MyAppointments';
 import MyHistory from './Pages/Dashboard/MyHistory';
@@ -28,6 +29,7 @@ function App() {
           <Route index element={<MyAppointments></MyAppointments>}></Route>
           <Route path='myreviews' element={<MyReviews></MyReviews>}></Route>
           <Route path='myhistory' element={<MyHistory></MyHistory>}></Route>
+          <Route path='allusers' element={<AllUsers></AllUsers>}></Route>
         </Route>
         <Route path='/reviews' element={<Reviews></Reviews>}></Route>
         <Route path='/contactus' element={<Contact></Contact>}></Route>
